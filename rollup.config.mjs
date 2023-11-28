@@ -21,7 +21,7 @@ export default [
 				sourcemap: true
 			}
 		],
-		external: ['react-dom'],
+		external: ['react', 'react-dom'],
 		plugins: [
 			resolve(),
 			commonjs(),
