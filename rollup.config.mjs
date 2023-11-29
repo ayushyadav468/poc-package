@@ -2,7 +2,9 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
+import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
+import svg from 'rollup-plugin-svg';
 
 import packageJson from './package.json' assert { type: 'json' };
 
@@ -21,12 +23,14 @@ export default [
 				sourcemap: true
 			}
 		],
-		external: ['react', 'react-dom'],
+		external: [...Object.keys(packageJson.peerDependencies || {})],
 		plugins: [
+			external(),
 			resolve(),
 			commonjs(),
 			typescript({ tsconfig: './tsconfig.json' }),
-			postcss()
+			postcss(),
+			svg()
 		]
 	},
 	{

@@ -1,1 +1,3 @@
-export { default as Header } from './Header';
+import './index.css';
+
+export * from './Header';

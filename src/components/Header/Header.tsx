@@ -7,14 +7,23 @@ type Todo = {
   "completed": boolean
 }
 
-const Header = () => {
-  const [todosData, setTodosData] = React.useState<Todo[] | []>([])
+const getTodoData = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const data = await response.json();
 
-  React.useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((response) => response.json())
-      .then((json) => setTodosData(json))
-  }, [])
+  return data;
+}
+
+const Header = async () => {
+  // const [todosData, setTodosData] = React.useState<Todo[] | []>([])
+
+  // React.useEffect(() => {
+  //   fetch('https://jsonplaceholder.typicode.com/todos')
+  //     .then((response) => response.json())
+  //     .then((json) => setTodosData(json))
+  // }, [])
+
+  const todosData: Todo[] = await getTodoData();
 
   return (
     <div>
