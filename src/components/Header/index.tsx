@@ -14,7 +14,7 @@ const getTodoData = async () => {
   return data;
 }
 
-const Header = async () => {
+export const Header = async () => {
   // const [todosData, setTodosData] = React.useState<Todo[] | []>([])
 
   // React.useEffect(() => {
@@ -27,9 +27,9 @@ const Header = async () => {
 
   return (
     <div>
-      <ul>
+      <ul className='flex flex-col gap-1'>
         {todosData && todosData.length > 0 ? todosData.map((todo, index) => (
-          <li key={index} className='boder-white p-2 rounded hover:shadow'>
+          <li key={index} className='border border-white p-2 rounded hover:shadow'>
             <h3>{todo.title}</h3>
             <p>Id: {todo.id}</p>
             <p>User Id: {todo.userId}</p>
@@ -41,5 +41,3 @@ const Header = async () => {
     </div>
   )
 }
-
-export default Header
