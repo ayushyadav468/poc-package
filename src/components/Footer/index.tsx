@@ -17,7 +17,7 @@ type SiteMapType = {
   domain: string | null
 }
 
-const Footer = async ({ apiEndpoint, siteMap, domain }: SiteMapType) => {
+export const Footer = async ({ apiEndpoint, siteMap, domain }: SiteMapType) => {
   const [env, ...rest] = domain ? domain.split('.') : 'qa1.foundit.in'.split('.') // find a better way to do this
   const websiteURL = rest.join('.')
 
@@ -166,5 +166,3 @@ const Footer = async ({ apiEndpoint, siteMap, domain }: SiteMapType) => {
     </footer>
   )
 }
-
-export default Footer
