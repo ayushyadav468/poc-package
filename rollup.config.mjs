@@ -5,8 +5,10 @@ import dts from 'rollup-plugin-dts';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import svg from 'rollup-plugin-svg';
+import tailwindcss from 'tailwindcss';
 
 import packageJson from './package.json' assert { type: 'json' };
+import tailwindConfig from './tailwind.config.js';
 
 export default [
 	{
@@ -30,7 +32,15 @@ export default [
 			commonjs(),
 			typescript({ tsconfig: './tsconfig.json' }),
 			postcss({
-				extensions: ['.css']
+				config: {
+					path: './postcss.config.js'
+				},
+				extensions: ['.css'],
+				minimize: true,
+				inject: {
+					insertAt: 'top'
+				},
+				plugins: [tailwindcss(tailwindConfig)]
 			}),
 			svg()
 		]

@@ -115,5 +115,13 @@
 		"moduleResolution": "node",
 		"allowSyntheticDefaultImports": true,
 		"emitDeclarationOnly": true
-	}
+	},
+	"include": [
+		"**/*.ts",
+		"**/*.tsx",
+		"src/**/*.ts",
+		"src/index.js",
+		"tailwind.config.js"
+	],
+	"exclude": ["node_modules", "dist"]
 }
